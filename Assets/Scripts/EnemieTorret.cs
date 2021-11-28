@@ -27,23 +27,27 @@ public class EnemieTorret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (activo == true)
+        if(player != null)
         {
-            if (player.transform.position.x <= transform.position.x)
+            if (activo == true)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                if (player.transform.position.x <= transform.position.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
             }
-            else
+
+            Collider2D chocando = Physics2D.OverlapCircle(transform.position, 11, LayerMask.GetMask("Player"));
+            if (chocando && activo == true)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                Shoot();
             }
         }
-        
-        Collider2D chocando = Physics2D.OverlapCircle(transform.position, 11, LayerMask.GetMask("Player"));
-        if (chocando && activo == true)
-        {
-            Shoot();
-        }
+       
         
     }
     private void OnDrawGizmos()

@@ -8,14 +8,14 @@ public class EnemieFly : MonoBehaviour
     [SerializeField] AudioClip sfx_enemieDeath;
     [SerializeField] AstarPath enemy;
     Animator myAnimator;
-    Rigidbody2D _rigidbody;
+   // Rigidbody2D _rigidbody;
     [SerializeField] GameManager gm;
     [SerializeField] CircleCollider2D col;
     // Start is called before the first frame update
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody2D>();
+       // _rigidbody = GetComponent<Rigidbody2D>();
    
     }
     void Start()
@@ -36,7 +36,7 @@ public class EnemieFly : MonoBehaviour
         } else
         {    
             enemy.enabled = false;
-            _rigidbody.velocity =  Vector2.zero;
+           // _rigidbody.velocity =  Vector2.zero;
         }
     }
     private void OnDrawGizmos()
